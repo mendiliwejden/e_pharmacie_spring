@@ -14,7 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Entity
+ @Entity
 @Table(name = "product")
 public class Product {
     @Id
@@ -27,12 +27,12 @@ public class Product {
     @Column(name = "price")
     private double price;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "category_id" , referencedColumnName = "id")
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category;
     @ManyToMany(mappedBy = "product_command")
-    private List<Command> commands=new ArrayList<Command>();
-    
-    ///////////Getters setters//////////////
+    private List<Command> commands = new ArrayList<Command>();
+
+    /////////// Getters setters//////////////
     public int getId() {
         return id;
     }
@@ -65,14 +65,13 @@ public class Product {
         this.price = price;
     }
 
-
     public List<Command> getCommands() {
         return commands;
     }
 
     public void setCommands(List<Command> commands) {
         this.commands = commands;
-    
+
     }
 
     public Category getCategory() {
@@ -82,7 +81,5 @@ public class Product {
     public void setCategory(Category category) {
         this.category = category;
     }
-    
 
-}   
-
+}
