@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import com.project.e_pharmacie_spring.models.Category;
 import com.project.e_pharmacie_spring.models.Product;
 
 import org.springframework.stereotype.Repository;
@@ -21,9 +22,9 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
     EntityManager entity;
 
     @Override
-    public List<Product> listProductByCategory(String category) {
-        Query query=entity.createNativeQuery("SELECT v.* FROM product v WHERE v.category=?",Product.class);
-        query.setParameter(1,category);
+    public List<Product> listProductByCategory(Category category) {
+        Query query=entity.createNativeQuery("SELECT v.* FROM product v WHERE v.category_id=?",Product.class);
+        query.setParameter(1,category.getId());
         return (List<Product>) query.getResultList();
     }
 

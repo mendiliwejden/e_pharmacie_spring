@@ -30,6 +30,7 @@ public class CommandRepositoryImpl implements CommandRepositoryCustom {
     public List<Command> listCommandByUser(User user) {
         Query query=entity.createNativeQuery("SELECT c.* FROM command c WHERE c.user_id= ?");
         query.setParameter(1, user.getId());
+        list = ( List<Command>) query.getResultList();
         return null;
     }
     
